@@ -1,18 +1,40 @@
 import { FC } from "react";
-import { Box } from "@mui/material";
+import { observer } from "mobx-react-lite";
 import List from "@mui/material/List";
 import { TodoListItem } from "../todo-list-item/TodoListItem";
-import todoStore from "../../Store/TodoStore";
+import TodoStore from "../../Store/TodoStore";
+import { TodoDto } from "../../types/types";
+import SimpleBar from "simplebar-react";
 
-export const TodoList: FC = () => {
-  const todos = todoStore.todos;
+const TodoList: FC = () => {
+  const todos = TodoStore.filteredTodos;
+
+  const onEdit = (data: TodoDto) => {
+    TodoStore.updateItem(data);
+  };
+
+  const onDelete = (id: string): void => {
+    TodoStore.removeItem(id);
+  };
+
   return (
-    <Box>
-      <List>
-        {todos.map((todo) => (
-          <TodoListItem data={todo} />
-        ))}
-      </List>
-    </Box>
+    <SimpleBar style={{ height: "calc(100vh - 250px)" }}>
+      {todos.length > 0 ? (
+        <List>
+          {todos.map((todo) => (
+            <TodoListItem
+              key={todo.id}
+              data={todo}
+              onEdit={onEdit}
+              onDelete={onDelete}
+            />
+          ))}
+        </List>
+      ) : (
+        "в списке нет заданий"
+      )}
+    </SimpleBar>
   );
 };
+
+export default observer(TodoList);

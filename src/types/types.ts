@@ -1,13 +1,13 @@
 export interface TodoDto {
   id: string;
   value: string;
-  isComplited: boolean;
+  isCompleted: boolean;
 }
 
 export interface TodoListItemProps {
   data: TodoDto;
-  onDelete: () => void;
-  onRemove: () => void;
-  onEdit: () => void;
-  onComplite: () => void;
+  onDelete: (id: string) => void;
+  onEdit: (data: TodoDto) => void;
 }
+
+export type Filter = "ALL" | "ACTIVE" | "COMPLETED";

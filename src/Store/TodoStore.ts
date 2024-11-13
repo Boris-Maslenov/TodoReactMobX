@@ -1,24 +1,12 @@
 import { makeAutoObservable } from "mobx";
-import { TodoDto } from "../types/types";
-
-const todosDefault = [
-  {
-    id: "0",
-    value: "Изучить Linux",
-    isComplited: false,
-  },
-  {
-    id: "1",
-    value: "Изучить Docker",
-    isComplited: true,
-  },
-];
+import { TodoDto, Filter } from "../types/types";
 
 class TodoStore {
-  _todos: TodoDto[];
+  _todos: TodoDto[] = [];
+  _filters: Filter[] = ["ALL", "ACTIVE", "COMPLETED"];
+  _activeFilter: Filter = "ALL";
 
   constructor() {
-    this._todos = todosDefault;
     makeAutoObservable(this);
   }
 
@@ -43,7 +31,30 @@ class TodoStore {
   removeItem(id: string) {
     this._todos = this._todos.filter((todo) => todo.id !== id);
   }
+
+  get getFreeTodosCount() {
+    return this.filteredTodos.filter((todo) => !todo.isCompleted).length;
+  }
+
+  get filters() {
+    return this._filters;
+  }
+
+  get activeFilter() {
+    return this._activeFilter;
+  }
+
+  set activeFilter(filter: Filter) {
+    this._activeFilter = filter;
+  }
+
+  get filteredTodos() {
+    if (this._activeFilter === "ALL") return this._todos;
+
+    return this.todos.filter((todo) =>
+      this._activeFilter === "COMPLETED" ? todo.isCompleted : !todo.isCompleted
+    );
+  }
 }
 
-const TodoStoreInstance = new TodoStore();
-export default TodoStoreInstance;
+export default new TodoStore();
