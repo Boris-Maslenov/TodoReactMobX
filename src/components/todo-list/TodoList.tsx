@@ -5,6 +5,7 @@ import { TodoListItem } from "../todo-list-item/TodoListItem";
 import TodoStore from "../../Store/TodoStore";
 import { TodoDto } from "../../types/types";
 import SimpleBar from "simplebar-react";
+import { simplebarSx } from "./TodoList.styles";
 
 const TodoList: FC = () => {
   const todos = TodoStore.filteredTodos;
@@ -18,7 +19,7 @@ const TodoList: FC = () => {
   };
 
   return (
-    <SimpleBar style={{ height: "calc(100vh - 250px)" }}>
+    <SimpleBar style={simplebarSx}>
       {todos.length > 0 ? (
         <List>
           {todos.map((todo) => (

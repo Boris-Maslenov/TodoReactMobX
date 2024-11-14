@@ -1,7 +1,7 @@
 import { Box, RadioGroup, FormControlLabel, Radio } from "@mui/material";
 import TodoStore from "../../Store/TodoStore";
 import { observer } from "mobx-react-lite";
-import { Filter } from "../../Store/TodoStore";
+import { Filter } from "../../types/types";
 
 const Filters = () => {
   const activeFilter = TodoStore.activeFilter;

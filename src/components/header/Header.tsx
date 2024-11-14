@@ -1,21 +1,8 @@
 import { Box } from "@mui/material";
+import { headerSx } from "./Header.styles";
 
 const Header = () => {
-  return (
-    <Box
-      sx={{
-        height: "100px",
-        fontSize: "25px",
-        background: "#005596",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "#fff",
-      }}
-    >
-      TODOS test app
-    </Box>
-  );
+  return <Box sx={headerSx}>TODOS test app</Box>;
 };
 
 export default Header;

@@ -1,9 +1,20 @@
 import { FC } from "react";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import { ButtonGroup, Button, Stack, Checkbox } from "@mui/material";
+import {
+  ButtonGroup,
+  Button,
+  Stack,
+  Checkbox,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 import { ItemTextIcon, RemoveIcon } from "../icons";
 import { TodoListItemProps } from "../../types/types";
+import {
+  itemBlockSx,
+  buttonTextIconSx,
+  buttonDeleteIconSx,
+  textFieldMixin,
+} from "./TodoListItem.styles";
 
 export const TodoListItem: FC<TodoListItemProps> = ({
   data,
@@ -11,15 +22,9 @@ export const TodoListItem: FC<TodoListItemProps> = ({
   onDelete,
 }) => {
   const { id, value, isCompleted } = data;
+
   return (
-    <ListItem
-      disablePadding
-      sx={{
-        border: "1px solid #cdcdcd",
-        display: "block",
-        marginBottom: "7px",
-      }}
-    >
+    <ListItem disablePadding sx={itemBlockSx}>
       <Stack
         direction={"row"}
         alignItems={"center"}
@@ -31,19 +36,12 @@ export const TodoListItem: FC<TodoListItemProps> = ({
             onChange={(e) => onEdit({ ...data, isCompleted: e.target.checked })}
             size="small"
           />
-          <Button disabled={isCompleted} sx={{ border: "none!important" }}>
+          <Button disabled={isCompleted} sx={buttonTextIconSx}>
             <ItemTextIcon />
           </Button>
         </ButtonGroup>
-        <ListItemText
-          sx={{ textDecoration: isCompleted ? "line-through" : "none" }}
-        >
-          {value}
-        </ListItemText>
-        <Button
-          onClick={() => onDelete(id)}
-          sx={{ border: "none", marginLeft: "auto" }}
-        >
+        <ListItemText sx={textFieldMixin(isCompleted)}>{value}</ListItemText>
+        <Button onClick={() => onDelete(id)} sx={buttonDeleteIconSx}>
           <RemoveIcon />
         </Button>
       </Stack>

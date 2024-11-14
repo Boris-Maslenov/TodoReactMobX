@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import TodoStore from "../../Store/TodoStore";
 import { genUuid } from "../../utils/genUuid";
+import { formSx } from "./TodoBuilder.styles";
 
 const TodoBuilder = () => {
   const [value, setValue] = useState("");
@@ -22,15 +23,7 @@ const TodoBuilder = () => {
   };
 
   return (
-    <Box
-      component={"form"}
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        height: "100px",
-        gap: "15px",
-      }}
-    >
+    <Box component={"form"} sx={formSx}>
       <TextField
         sx={{ width: "50%" }}
         size="small"
