@@ -36,6 +36,15 @@ class TodoStore {
     return this.filteredTodos.filter((todo) => !todo.isCompleted).length;
   }
 
+  get getFreeTodosProcent() {
+    const complitedCount = this.filteredTodos.filter(
+      (todo) => todo.isCompleted
+    ).length;
+
+    const percent = (complitedCount * 100) / this.filteredTodos.length;
+    return percent ? percent.toFixed(2) : 0;
+  }
+
   get filters() {
     return this._filters;
   }

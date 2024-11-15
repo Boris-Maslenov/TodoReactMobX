@@ -1,5 +1,5 @@
 import { Box, RadioGroup, FormControlLabel, Radio } from "@mui/material";
-import TodoStore from "../../Store/TodoStore";
+import TodoStore from "../../store/TodoStore";
 import { observer } from "mobx-react-lite";
 import { Filter } from "../../types/types";
 

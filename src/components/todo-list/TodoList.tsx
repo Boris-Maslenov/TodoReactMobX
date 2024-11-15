@@ -2,7 +2,7 @@ import { FC } from "react";
 import { observer } from "mobx-react-lite";
 import List from "@mui/material/List";
 import { TodoListItem } from "../todo-list-item/TodoListItem";
-import TodoStore from "../../Store/TodoStore";
+import TodoStore from "../../store/TodoStore";
 import { TodoDto } from "../../types/types";
 import SimpleBar from "simplebar-react";
 import { simplebarSx } from "./TodoList.styles";
