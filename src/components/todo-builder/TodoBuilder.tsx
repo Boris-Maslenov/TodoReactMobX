@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
-import TodoStore from "../../store/TodoStore";
+import todoStore from "../../store/todoStore";
 import { genUuid } from "../../utils/gen-uuid";
 import { formSx } from "./TodoBuilder.styles";
 
@@ -18,7 +18,7 @@ const TodoBuilder = () => {
       value,
     };
 
-    TodoStore.addItem(newTodo);
+    todoStore.addItem(newTodo);
     clear();
   };
 

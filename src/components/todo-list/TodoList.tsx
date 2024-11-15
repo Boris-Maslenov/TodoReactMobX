@@ -2,20 +2,20 @@ import { FC } from "react";
 import { observer } from "mobx-react-lite";
 import List from "@mui/material/List";
 import { TodoListItem } from "../todo-list-item/TodoListItem";
-import TodoStore from "../../store/TodoStore";
 import { TodoDto } from "../../types/types";
 import SimpleBar from "simplebar-react";
+import todoStore from "../../store/todoStore";
 import { simplebarSx } from "./TodoList.styles";
 
 const TodoList: FC = () => {
-  const todos = TodoStore.filteredTodos;
+  const todos = todoStore.filteredTodos;
 
   const onEdit = (data: TodoDto) => {
-    TodoStore.updateItem(data);
+    todoStore.updateItem(data);
   };
 
   const onDelete = (id: string): void => {
-    TodoStore.removeItem(id);
+    todoStore.removeItem(id);
   };
 
   return (

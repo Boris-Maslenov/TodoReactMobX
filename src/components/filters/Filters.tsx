@@ -1,15 +1,15 @@
 import { Box, RadioGroup, FormControlLabel, Radio } from "@mui/material";
-import TodoStore from "../../store/TodoStore";
+import todoStore from "../../store/todoStore";
 import { observer } from "mobx-react-lite";
 import { Filter } from "../../types/types";
 
 const Filters = () => {
-  const activeFilter = TodoStore.activeFilter;
-  const filtersDisabled = !TodoStore.todos.length;
+  const activeFilter = todoStore.activeFilter;
+  const filtersDisabled = !todoStore.todos.length;
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value as Filter;
-    TodoStore.activeFilter = value;
+    todoStore.activeFilter = value;
   };
 
   return (
@@ -20,7 +20,7 @@ const Filters = () => {
         value={activeFilter}
         onChange={handleFilterChange}
       >
-        {TodoStore.filters.map((filter, i) => (
+        {todoStore.filters.map((filter, i) => (
           <FormControlLabel
             key={filter + i}
             value={filter}
