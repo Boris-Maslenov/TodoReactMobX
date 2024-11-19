@@ -36,12 +36,16 @@ export const TodoListItem: FC<TodoListItemProps> = ({
             onChange={(e) => onEdit({ ...data, isCompleted: e.target.checked })}
             size="small"
           />
-          <Button disabled={isCompleted} sx={buttonTextIconSx}>
+          <Button data-list disabled={isCompleted} sx={buttonTextIconSx}>
             <ItemTextIcon />
           </Button>
         </ButtonGroup>
         <ListItemText sx={textFieldMixin(isCompleted)}>{value}</ListItemText>
-        <Button onClick={() => onDelete(id)} sx={buttonDeleteIconSx}>
+        <Button
+          data-delete
+          onClick={() => onDelete(id)}
+          sx={buttonDeleteIconSx}
+        >
           <RemoveIcon />
         </Button>
       </Stack>

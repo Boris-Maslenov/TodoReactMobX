@@ -21,7 +21,7 @@ const TodoList: FC = () => {
   return (
     <SimpleBar style={simplebarSx}>
       {todos.length > 0 ? (
-        <List>
+        <List data-testid="todos-list">
           {todos.map((todo) => (
             <TodoListItem
               key={todo.id}
