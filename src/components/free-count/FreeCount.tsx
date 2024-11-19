@@ -9,7 +9,9 @@ const FreeCount = () => {
   const text = plurRus(freeCount, "задачу", "задачи", "задач");
 
   return (
-    <Box>{`Осталось выполнить ${freeCount} ${text} | Выполнено: ${freeCountProcent}%`}</Box>
+    <Box>{`Осталось выполнить ${freeCount} ${text} | Выполнено: ${Math.floor(
+      freeCountProcent
+    )}%`}</Box>
   );
 };
 

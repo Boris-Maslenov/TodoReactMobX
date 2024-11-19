@@ -1,7 +1,15 @@
-// import { render, fireEvent, screen } from "@testing-library/react";
+import { render, cleanup, screen } from "@testing-library/react";
+import App from "../App.tsx";
 
-describe("Компонент рендерится", () => {
-  it("renders", () => {
-    expect(10).toBe(10);
+describe("Todos list tests", () => {
+  beforeEach(() => {
+    render(<App />);
+  });
+  afterEach(() => {
+    cleanup();
+  });
+
+  it("Список заданий рендерится", async () => {
+    screen.debug();
   });
 });
