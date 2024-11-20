@@ -75,7 +75,7 @@ describe("Todos list tests", () => {
     expect(screen.getByText(/Осталось выполнить 0 задач/gi));
   });
 
-  it("Клик на чек бокс выполнено/не выполнено", async () => {
+  it("Фильтрация", async () => {
     mockStoreData(mockTodos);
     const todosWrap = await screen.findByTestId("todos-list");
     const todoElements = todosWrap.querySelectorAll("li");
